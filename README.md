@@ -7,14 +7,15 @@ This code uses column headers as filename, FWHM, and M5SIGMA.
     M5SIGMA is defined as the magnitude of point sources for which the effective counts are at signal-to-noise of 5.
 One may need to change these for their correct columns.
 
-Requirements:
-    Numpy
-    Pandas
+### Requirements:
 
-How to use:
-python getorder_template.py [table of images]
+- Numpy
+- Pandas
 
-Example:
-python getorder_template.py example_field257A.txt
+### How to use:
+```python getorder_template.py [table of images]```
+
+### Example:
+```python getorder_template.py example_field257A.txt```
 
  Returns ordered list as example_field257A_tmplorder.txt

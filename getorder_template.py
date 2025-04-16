@@ -1,7 +1,6 @@
 '''
 Author: Rodrigo Angulo (rangulo1@jhu.edu)
 
-
 '''
 
 import sys,os

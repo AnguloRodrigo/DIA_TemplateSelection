@@ -12,7 +12,7 @@ Requirements:
     Pandas
 
 How to use:
-python getorder_template.py <file-pattern>
+python getorder_template.py [file-pattern]
 
 Example:
 python getorder_template.py example_field257A.txt

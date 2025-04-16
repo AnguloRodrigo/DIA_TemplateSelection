@@ -16,4 +16,5 @@ python getorder_template.py [table of images]
 
 Example:
 python getorder_template.py example_field257A.txt
+
  Returns ordered list as example_field257A_tmplorder.txt

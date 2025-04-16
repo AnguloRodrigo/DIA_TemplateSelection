@@ -1,8 +1,15 @@
 # DIA_TemplateSelection
 Improve template selection for kernel matching difference image analysis using a priori based off the seeing and depth quality of the input images.
 
-Inputs a list of filenames, FWHM values, and m5sigma values of images in a pandas readable table. Outputs a list of descending order of images quality as template choice.
+Inputs a pandas readable table consistinf of columns with filenames, seeing values, and depth values of images. Outputs a list of descending order of images quality as template choice.
+This code uses column headers as filename, FWHM, and M5SIGMA.
+    FWHM is the full-width at half maximum of the PSF of the image.
+    M5SIGMA is defined as the magnitude of point sources for which the effective counts are at signal-to-noise of 5.
+One may need to change these for their correct columns.
+
+How to use:
+python getorder_template.py <file pattern>
 
 Example:
-python getorder_templates.py <file pattern (e.g. *.dcmp)>
-    - can specify directory where data is located with --input_dir
+python getorder_template.py example_field257A.txt
+ Returns ordered list as example_field257A_tmplorder.txt

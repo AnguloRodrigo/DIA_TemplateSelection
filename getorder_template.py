@@ -1,3 +1,9 @@
+'''
+Author: Rodrigo Angulo (rangulo1@jhu.edu)
+
+
+'''
+
 import sys,os
 import pandas as pd
 import numpy as np

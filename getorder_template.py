@@ -62,7 +62,7 @@ if __name__ == '__main__':
     txt_file = sys.argv[1]
     table_ims = pd.read_csv(txt_file, sep='\s+')     # txt file should be pandas readable table of filename, fwhm (seeing), and m5sigma (depth)
 
-    calc_FOM(table_ims,81)                           # found optimal slope of 81 +/- 17; see Angulo et al. 2025
+    calc_FOM(table_ims,0.81)                           # found optimal slope of 0.81 +/- 0.4; see Angulo et al. 2025
     ordered = sort_by_FOM(table_ims)
 
     table_ims.loc[ordered].to_csv(str(txt_file.rpartition('.')[0])+'_tmplorder.txt', sep='\t', index=False)

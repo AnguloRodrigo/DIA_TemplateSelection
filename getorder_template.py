@@ -23,7 +23,7 @@ def dist2line(fwhm, depth, slope, ref_p):
     return(dist)
 
         
-def calc_FOM(table, slope, ref_point='median'):
+def calc_FoM(table, slope, ref_point='median'):
         if ref_point == 'median':
             ref_fw = table['FWHM'].median()
             ref_m5 = table['M5SIGMA'].median()
@@ -37,22 +37,22 @@ def calc_FOM(table, slope, ref_point='median'):
             
             dist = dist2line(fw_i,m5_i,slope=slope,ref_p=[ref_fw,ref_m5])
             
-            table.loc[i,'FOM_dist'] = np.round(dist,3)
+            table.loc[i,'FoM_dist'] = np.round(dist,3)
 
-        return('Calculated FOMs -- Completed')
+        return('Calculated FoMs -- Completed')
 
 
-def sort_by_FOM(table, split_by_filter=False):
+def sort_by_FoM(table, split_by_filter=False):
     order_ind = []
 
     if split_by_filter is True:
         phot_codes = np.unique(table['PHOTCODE'])          # we use DECam images which have a photcode to specify filter and ccd
         for i in phot_codes:
             phcd_i = np.where(table.loc[:,'PHOTCODE'].eq(i))
-            order_i = table.loc[phcd_i].sort_values('FOM_dist',ascending=True).index.values
+            order_i = table.loc[phcd_i].sort_values('FoM_dist',ascending=True).index.values
             order_ind += list(order_i)
     else:
-        order_ind = table.loc[:].sort_values('FOM_dist',ascending=True).index.values
+        order_ind = table.loc[:].sort_values('FoM_dist',ascending=True).index.values
 
     return(order_ind)
 
@@ -62,8 +62,8 @@ if __name__ == '__main__':
     txt_file = sys.argv[1]
     table_ims = pd.read_csv(txt_file, sep='\s+')     # txt file should be pandas readable table of filename, fwhm (seeing), and m5sigma (depth)
 
-    calc_FOM(table_ims,0.81)                           # found optimal slope of 0.81 +/- 0.4; see Angulo et al. 2025
-    ordered = sort_by_FOM(table_ims)
+    calc_FoM(table_ims,0.81)                           # found optimal slope of 0.81 +/- 0.4; see Angulo et al. 2025
+    ordered = sort_by_FoM(table_ims)
 
     table_ims.loc[ordered].to_csv(str(txt_file.rpartition('.')[0])+'_tmplorder.txt', sep='\t', index=False)
 
